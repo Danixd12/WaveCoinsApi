@@ -118,13 +118,13 @@ class KrataEconomy {
      * Retorna los datos de una cuenta.
      * @return getEconomy#nombre getEconomy#dinero
      */
-    fun getEconomy(Name: String): Any {
+    fun getEconomy(Name: String): Any? {
         val datos = collection.findOne("{cuenta:'${Name}'}")
 
         return if(datos?.cuenta == null){
             "No existe tal cuenta"
         } else {
-            "Economia de ${datos?.cuenta}\n- Dinero: ${datos?.cantidad}"
+            return datos.cantidad;
         }
 
     }
